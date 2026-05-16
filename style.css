@@ -1,0 +1,375 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0f0f0f;
+    color: #fff;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid #d4a574;
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo h1 {
+    background: linear-gradient(135deg, #f59e0b, #d4a574);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
+}
+
+.logo span {
+    font-size: 0.75rem;
+    color: #888;
+    margin-left: 0.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-link {
+    color: #ccc;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #d4a574;
+}
+
+/* Sections */
+.section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #f59e0b;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    padding: 0;
+    margin-top: 60px;
+    height: calc(100vh - 60px);
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+#canvas-container {
+    width: 100%;
+    height: 100%;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.hero-content {
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 10;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    pointer-events: none;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    color: #f59e0b;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+    color: #aaa;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hint {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem !important;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    pointer-events: all;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #d4a574;
+    color: #000;
+}
+
+.btn-primary:hover {
+    background: #e8b88a;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #d4a574;
+    border: 2px solid #d4a574;
+}
+
+.btn-secondary:hover {
+    background: rgba(212, 165, 116, 0.1);
+}
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.service-card {
+    background: #1a1a1a;
+    border: 2px solid #d4a574;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    box-shadow: 0 0 30px rgba(212, 165, 116, 0.3);
+    transform: translateY(-5px);
+}
+
+.service-card h3 {
+    color: #d4a574;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.service-card p {
+    color: #aaa;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+.duration {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    height: 250px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 1rem;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover p {
+    opacity: 1;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal img {
+    max-width: 90vw;
+    max-height: 80vh;
+    border-radius: 0.75rem;
+}
+
+/* Booking Form */
+.booking-form {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+    padding: 0.75rem;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    border-color: #d4a574;
+    outline: none;
+}
+
+.booking-form button {
+    width: 100%;
+}
+
+.success-message {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #1a4d1a;
+    border: 1px solid #2db82d;
+    border-radius: 0.5rem;
+    color: #2db82d;
+    text-align: center;
+}
+
+/* Contact Grid */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.contact-card {
+    background: #1a1a1a;
+    border: 2px solid #d4a574;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.contact-card h3 {
+    color: #d4a574;
+    margin-bottom: 1rem;
+}
+
+.contact-card p {
+    color: #aaa;
+    line-height: 1.6;
+}
+
+/* Footer */
+footer {
+    background: #000;
+    border-top: 2px solid #d4a574;
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .section {
+        padding: 2rem 1rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .services-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}

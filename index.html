@@ -4,10 +4,197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J S Ramesh Hair Salon - 3D Experience</title>
-    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-900 text-white">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>J S Ramesh</h1>
+                <span>Hair Salon</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#booking" class="nav-link">Book</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section with 3D -->
+    <section id="home" class="section hero">
+        <div id="canvas-container"></div>
+        <div class="hero-content">
+            <h1>J S Ramesh Hair Salon</h1>
+            <p>Premium Barbershop Experience in Bangalore</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollTo('booking')">Book Now</button>
+                <button class="btn btn-secondary" onclick="scrollTo('services')">View Services</button>
+            </div>
+            <p class="hint">🖱️ Drag to rotate • 🔄 Scroll to zoom</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Classic Haircut</h3>
+                <p>Clean and expert styling</p>
+                <p class="price">₹300</p>
+                <p class="duration">30 min</p>
+            </div>
+            <div class="service-card">
+                <h3>Premium Haircut</h3>
+                <p>Premium with consultation</p>
+                <p class="price">₹500</p>
+                <p class="duration">45 min</p>
+            </div>
+            <div class="service-card">
+                <h3>Beard Trim</h3>
+                <p>Professional shaping</p>
+                <p class="price">₹200</p>
+                <p class="duration">20 min</p>
+            </div>
+            <div class="service-card">
+                <h3>Head Massage</h3>
+                <p>Relaxing massage therapy</p>
+                <p class="price">₹250</p>
+                <p class="duration">30 min</p>
+            </div>
+            <div class="service-card">
+                <h3>Hair Coloring</h3>
+                <p>Professional coloring</p>
+                <p class="price">₹800</p>
+                <p class="duration">60 min</p>
+            </div>
+            <div class="service-card">
+                <h3>Straight Shave</h3>
+                <p>Traditional razor shave</p>
+                <p class="price">₹150</p>
+                <p class="duration">15 min</p>
+            </div>
+            <div class="service-card">
+                <h3>Hair Treatment</h3>
+                <p>Therapeutic treatment</p>
+                <p class="price">₹600</p>
+                <p class="duration">45 min</p>
+            </div>
+            <div class="service-card">
+                <h3>Full Package</h3>
+                <p>Haircut + Shave + Massage</p>
+                <p class="price">₹1200</p>
+                <p class="duration">90 min</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&h=500&fit=crop" alt="Salon">
+                <p>Salon Interior</p>
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1534585409754-4fcd1c4e79f5?w=500&h=500&fit=crop" alt="Haircut">
+                <p>Modern Cut</p>
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1599351751644-f7cadba8f84f?w=500&h=500&fit=crop" alt="Fade">
+                <p>Fade Style</p>
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=500&h=500&fit=crop" alt="Chair">
+                <p>Premium Chair</p>
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1621905167918-48416bd8575a?w=500&h=500&fit=crop" alt="Beard">
+                <p>Beard Work</p>
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1576091160550-112173e7f9db?w=500&h=500&fit=crop" alt="View">
+                <p>Salon View</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="section">
+        <h2>Book Your Appointment</h2>
+        <form class="booking-form" onsubmit="handleBooking(event)">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="tel" placeholder="Phone" required>
+            <select required>
+                <option>Select Service</option>
+                <option>Classic Haircut (₹300)</option>
+                <option>Premium Haircut (₹500)</option>
+                <option>Beard Trim (₹200)</option>
+                <option>Head Massage (₹250)</option>
+                <option>Hair Coloring (₹800)</option>
+                <option>Straight Shave (₹150)</option>
+                <option>Hair Treatment (₹600)</option>
+                <option>Full Package (₹1200)</option>
+            </select>
+            <input type="date" required>
+            <select required>
+                <option>Select Time</option>
+                <option>09:00 AM</option>
+                <option>09:30 AM</option>
+                <option>10:00 AM</option>
+                <option>10:30 AM</option>
+                <option>11:00 AM</option>
+                <option>02:00 PM</option>
+                <option>03:00 PM</option>
+                <option>04:00 PM</option>
+                <option>05:00 PM</option>
+                <option>06:00 PM</option>
+            </select>
+            <textarea placeholder="Special requests..." rows="4"></textarea>
+            <button type="submit" class="btn btn-primary">Confirm Booking</button>
+        </form>
+        <div id="booking-message" style="display:none" class="success-message">✓ Booking submitted! Check your email for confirmation.</div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>📍 Address</h3>
+                <p>J S Ramesh Hair Salon<br>Bangalore, India 560001</p>
+            </div>
+            <div class="contact-card">
+                <h3>📞 Phone</h3>
+                <p>+91-XXXX-XXXX-XX<br>9:00 AM - 8:00 PM</p>
+            </div>
+            <div class="contact-card">
+                <h3>✉️ Email</h3>
+                <p>info@jsramesh.com<br>support@jsramesh.com</p>
+            </div>
+            <div class="contact-card">
+                <h3>⏰ Hours</h3>
+                <p>Mon-Fri: 9 AM - 8 PM<br>Sat-Sun: 8 AM - 9 PM</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Gallery -->
+    <div id="modal" class="modal" onclick="closeModal()">
+        <img id="modal-img" src="" alt="">
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 J S Ramesh Hair Salon. Made with ❤️</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
